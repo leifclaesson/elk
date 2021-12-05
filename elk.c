@@ -822,7 +822,7 @@ static jsval_t call_c(struct js *js, const char *fn, int fnlen, jsoff_t fnoff) {
   //printf("  TYPE %d RES: %" PRIxPTR " %g %p\n", type, res.v, res.d, res.p);
   // Import return value into JS
   switch (fn[0]) {
-    case 'p': return tov(res.w);
+    case 'p': return tov((double) res.w);
     case 'i': return tov((int) res.u64);
     case 'd': return tov(res.d);
     case 'b': return mkval(T_BOOL, res.w ? 1 : 0);

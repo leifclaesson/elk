@@ -22,6 +22,10 @@
 struct js;                 // JS engine (opaque)
 typedef uint64_t jsval_t;  // JS value placeholder
 
+#if defined(__cplusplus)
+extern "C" {
+#endif
+
 struct js *js_create(void *buf, size_t len);          // Create JS instance
 const char *js_str(struct js *, jsval_t val);         // Stringify JS value
 jsval_t js_eval(struct js *, const char *, size_t);   // Execute JS code
@@ -32,3 +36,7 @@ jsval_t js_mknum(struct js *, double);                // Create a number
 jsval_t js_import(struct js *, uintptr_t, const char *);   // Import native func
 void js_set(struct js *, jsval_t, const char *, jsval_t);  // Set obj attribute
 int js_usage(struct js *);                                 // Return mem usage
+
+#if defined(__cplusplus)
+}
+#endif
